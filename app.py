@@ -30,6 +30,20 @@ elif sem == 7:
 elif sem == 8:
     s = "VIII"
 
+#creating Results Folder
+
+
+foldername= "Results"
+
+if not os.path.exists(foldername):
+    os.makedirs(foldername)
+
+file_name=f"Results/{sem}th_Result_{ses}.csv"
+
+if os.path.exists(file_name):
+    os.remove(file_name)
+
+
 #  experiment --->
 
 
@@ -44,6 +58,10 @@ elif sem == 8:
 
 
 # Experiment ->>
+
+
+
+
 
 for r in range(s_reg,l_reg+1):
 
@@ -126,10 +144,10 @@ for r in range(s_reg,l_reg+1):
     df=pd.DataFrame([data])
 
     # check if file exists then append the data else create file
-    if  not os.path.exists(f"{sem}th_Result_{ses}.csv"):
-        df.to_csv(f"{sem}th_Result_{ses}.csv",index=False)
+    if  not os.path.exists(f"Results/{sem}th_Result_{ses}.csv"):
+        df.to_csv(f"Results/{sem}th_Result_{ses}.csv",index=False)
     else:
-        df.to_csv(f"{sem}th_Result_{ses}.csv",mode='a',header=False,index=False)
+        df.to_csv(f"Results/{sem}th_Result_{ses}.csv",mode='a',header=False,index=False)
 
     print(name, reg, sgpa, cgpa)
     # T.sleep(2)
