@@ -154,9 +154,13 @@ yearOfExam= btech_result[(sem,batch)]
 
 
 
-for r in range(s_reg,s_reg+10):
+for r in range(s_reg,s_reg+65):
 
-    targetUrl = f"https://results.beup.ac.in/ResultsBTech{S}Sem{yearOfExam}_B{batch}Pub.aspx?Sem={s}&RegNo={r}"
+
+    if sem== 8:
+         targetUrl= f"https://results.beup.ac.in/ResultsBTech8thSem{yearOfExam}Pub.aspx?Sem={s}&RegNo={r}"
+    else :
+         targetUrl = f"https://results.beup.ac.in/ResultsBTech{S}Sem{yearOfExam}_B{batch}Pub.aspx?Sem={s}&RegNo={r}"
 # 'https://results.beup.ac.in/ResultsBTech3rdSem2023_B2022Pub.aspx?Sem=III&RegNo=22105128054'
 
     dataHtml = urlopen(targetUrl)
@@ -164,6 +168,7 @@ for r in range(s_reg,s_reg+10):
     htmldata = dataHtml.read()
 
     dataHtml.close()
+
 
     resultSoup = soup(htmldata, 'html.parser')
 
